@@ -1,9 +1,10 @@
+<?php header('X-Frame-Options: ALLOW');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home</title>
+<title>Results</title>
 
 <link href="https://fonts.googleapis.com/css?family=Raleway|Open+Sans" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -93,8 +94,8 @@
 
   <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
     <ul class="nav navbar-nav">
-      <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> 
+      <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="results.html" class="nav-link">Contact</a></li> 
       <li class="nav-item"><a href="#" class="nav-link">Suggested CSS Frameworks</a></li>
     </ul>
   </div>
@@ -102,60 +103,66 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-md-4 offset-md-4">
-        <h1></h1>
-      </div>
-      <div class="col-md-4">
-        <h1>CSS PERFORMANCE TESTING TOOL</h1>
-      </div>
-      <div class="col-md-4 offset-md-4">
-        <h1></h1>
-      </div>
-  </div>
-  </div>
+      <h1>CSS PERFORMANCE TESTING TOOL <a class="btn btn-default" href="{{url('/')}}">Back</a></h1>
 
-<form role="form" action="{{url('validation')}}" method="post">
-<div class="container">
-  <div class="row">
-      {{csrf_field()}}
-      <div class="col-md-4 offset-md-4">
+      <div class="col-md-12">
+        <h3> Validation results for <a href="{{$url}}" target="_blank">{{$url}}</a></h3>
       </div>
+      <div class="col-md-12">
 
-      <div class="col-md-4">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        @if($results->errors->errorcount > 0)
+          <div class="alert alert-danger">
+            <b>Sorry! We found the following errors ({{$results->errors->errorcount}})</b>
+          </div>
+          <table class="table">
+            <tbody>
+              @foreach($results->errors->errorlist as $e)
+                <tr>
+                    <td colspan="3"><b>URI: </b><i><a target="_blank" href="{{$e->uri}}">{{$e->uri}}</a></i></td>
+                </tr>
+                 @foreach($e->error as $r)
+                    <tr>
+                        <td>{{$r->line}}</td>
+                        <td>{{$r->context}}</td>
+                        <td>{{$r->message}}</td>
+                    </tr>
+                  @endforeach
+              @endforeach
+            </tbody>
+          </table>
         @endif
-        <div class="form-group">
-          <label for="exampleInputEmail1">Input Link</label>
-          <input type="text" name="url" class="form-control" id="url" placeholder="http://www.website.com" required>
-        </div>
+
+        @if($results->warnings->warningcount > 0)
+          <div class="alert alert-warning">
+            <b>Warnings ({{$results->warnings->warningcount}})</b>
+          </div>
+          <table class="table">
+            <tbody>
+              @foreach($results->warnings->warninglist as $e)
+                <tr>
+                    <td colspan="3"><b>URI: </b><i><a target="_blank" href="{{$e->uri}}">{{$e->uri}}</a></i></td>
+                </tr>
+                 @foreach($e->warning as $r)
+                    <tr>
+                        <td>{{$r->line}}</td>
+                        <td>{{$r->context}}</td>
+                        <td>{{$r->message}}</td>
+                    </tr>
+                  @endforeach
+              @endforeach
+            </tbody>
+          </table>
+        @endif
+
+        @if($results->warnings->warningcount <= 0 && $results->errors->errorcount <= 0)
+          <div class="alert alert-success">
+            <b>Success! No errors found.</b>
+          </div>
+        @endif
       </div>
+  </div>
+  </div>
 
-      <div class="col-md-4 offset-md-4">
-      </div>
-
-</div>
-
-<div class="row">
-<div class="col-md-4 offset-md-4">
-      </div>
-
-       <div class="col-md-4">
-     <button type="submit" class="btn btn-default">Submit</button>
-     </div>
-       </div>
-
-       <div class="col-md-4 offset-md-4">
-      </div>
-
-</div>
- </form>
 
 </body>
 </html>

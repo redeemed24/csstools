@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c299fd7c6ab9fc3b1a3577ec40855d0b",
-    "content-hash": "96098e473b028cdb2529580554a1ae3e",
+    "hash": "c0aaec86bbc7a5f75621aad8f5604b7b",
+    "content-hash": "0d2b931d2e37d57686e92e5131a1bd67",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -151,6 +151,59 @@
                 "parser"
             ],
             "time": "2017-11-14 20:44:03"
+        },
+        {
+            "name": "ixudra/curl",
+            "version": "6.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ixudra/curl.git",
+                "reference": "1ab270e48082ee6e7f32fa72412c2c81eb974516"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ixudra/curl/zipball/1ab270e48082ee6e7f32fa72412c2c81eb974516",
+                "reference": "1ab270e48082ee6e7f32fa72412c2c81eb974516",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ixudra\\Curl\\CurlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Curl": "Ixudra\\Curl\\Facades\\Curl"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ixudra\\Curl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Oris",
+                    "email": "jan.oris@ixudra.be"
+                }
+            ],
+            "description": "Custom PHP Curl library for the Laravel 5 framework - developed by Ixudra",
+            "homepage": "http://ixudra.be",
+            "keywords": [
+                "Ixudra",
+                "curl",
+                "laravel"
+            ],
+            "time": "2017-12-08 14:31:13"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -430,6 +483,57 @@
                 "psysh"
             ],
             "time": "2017-07-13 13:11:05"
+        },
+        {
+            "name": "laravie/parser",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravie/parser.git",
+                "reference": "87fe17e6232b34e9ca3c0b26c20ff0083360295b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravie/parser/zipball/87fe17e6232b34e9ca3c0b26c20ff0083360295b",
+                "reference": "87fe17e6232b34e9ca3c0b26c20ff0083360295b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.1",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~4.8.35 || ~5.7 || ~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravie\\Parser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com",
+                    "homepage": "https://github.com/crynobone"
+                }
+            ],
+            "description": "XML Document Parser for PHP",
+            "keywords": [
+                "parser",
+                "xml"
+            ],
+            "time": "2017-07-26 08:38:45"
         },
         {
             "name": "league/flysystem",
@@ -739,6 +843,62 @@
                 "php"
             ],
             "time": "2017-11-04 11:48:34"
+        },
+        {
+            "name": "orchestra/parser",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchestral/parser.git",
+                "reference": "e2c6ff7fca54c03bc08abd25c33a086454a4022b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchestral/parser/zipball/e2c6ff7fca54c03bc08abd25c33a086454a4022b",
+                "reference": "e2c6ff7fca54c03bc08abd25c33a086454a4022b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "~5.4.0",
+                "laravie/parser": "~1.1",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "illuminate/support": "~5.4.0",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "~4.8|~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Orchestra\\Parser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com",
+                    "homepage": "https://github.com/crynobone"
+                }
+            ],
+            "description": "XML Document Parser for Laravel and PHP",
+            "keywords": [
+                "laravel",
+                "orchestra-platform",
+                "orchestral",
+                "parser",
+                "xml"
+            ],
+            "time": "2017-01-26 02:02:38"
         },
         {
             "name": "paragonie/random_compat",
