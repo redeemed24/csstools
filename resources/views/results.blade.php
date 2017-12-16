@@ -114,7 +114,7 @@
           <div class="alert alert-danger">
             <b>Sorry! We found the following errors ({{$results->errors->errorcount}})</b>
           </div>
-          <table class="table">
+          <table class="table" style="background:#fff; color:#000;">
             <tbody>
               @foreach($results->errors->errorlist as $e)
                 <tr>
@@ -124,7 +124,7 @@
                     <tr>
                         <td>{{$r->line}}</td>
                         <td>{{$r->context}}</td>
-                        <td>{{$r->message}}</td>
+                        <td><a href="https://www.google.com/?q={{trim($r->message)}}" target="_blank">{{$r->message}}</a></td>
                     </tr>
                   @endforeach
               @endforeach
@@ -136,7 +136,7 @@
           <div class="alert alert-warning">
             <b>Warnings ({{$results->warnings->warningcount}})</b>
           </div>
-          <table class="table">
+           <table class="table" style="background:#fff; color:#000;">
             <tbody>
               @foreach($results->warnings->warninglist as $e)
                 <tr>
@@ -146,7 +146,7 @@
                     <tr>
                         <td>{{$r->line}}</td>
                         <td>{{$r->context}}</td>
-                        <td>{{$r->message}}</td>
+                        <td><a href="https://www.google.ru/?q={{trim($r->message)}}" target="_blank">{{$r->message}}</a></td>
                     </tr>
                   @endforeach
               @endforeach
