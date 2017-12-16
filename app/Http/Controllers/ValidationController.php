@@ -14,11 +14,11 @@ class ValidationController extends Controller
 
     public function css(Request $request){
     	
-    	$validator = Validator::make($request->all(), [
+    	$validator = Validator::make($request->all(), [ //validation
             'url' => 'required|url'
         ]);
 
-        if ($validator->fails()) {
+        if ($validator->fails()) { //url format is invalid
             return redirect()->back()->withErrors($validator);
         }
         
@@ -26,9 +26,9 @@ class ValidationController extends Controller
 
         $file = 'results/' . time() . '.xml';
 
-        $data['response'] = Curl::to($this->w3c . $request->url)->withContentType('application/soap+xml')->download($file);
+        $data['response'] = Curl::to($this->w3c . $request->url)->withContentType('application/soap+xml')->download($file); //access w3school API
       
-       	$xml = simplexml_load_string(file_get_contents(url('/') . '/' . $file));
+       	$xml = simplexml_load_string(file_get_contents(url('/') . '/' . $file)); //parse XML File
     	
        	foreach($xml->children('http://www.w3.org/2003/05/soap-envelope') as $el){
 		    if ($el->getName() == 'Body'){
@@ -39,6 +39,6 @@ class ValidationController extends Controller
 		}
 
 		
-        return view('results', $data);
+        return view('results', $data); //display view
     }
 }
